@@ -76,17 +76,44 @@ if(map.includes(numStr)){
        }
     }
     //from 101 to 999
-     if(num>10 && num<100 ){
+     if(num>100 && num<1000 ){
        let arr = numStr.split("");
-       let hundreds = Number(100*arr[0]);
+           let hundreds = Number(100*arr[0]);
        let tens =Number( 10*arr[1]);
        let units = Number(arr[2]);
        
-       let unitRomain = convertToRoman(units);
-    
+       let tenRoman = convertToRoman(tens)
+       let unitRoman = convertToRoman(units);
+       
+      //onsole.log(tenRoman,unitRoman)
+       if(map.includes(hundreds.toString())){
+           returnVal = mappings[hundreds.toString()]+tenRoman+unitRoman;
+       }else{
+             if(num<500){
+               let val=mappings[100];
+              let times =hundreds/100;
+                  for(let i=1;i<times;i++){
+            val+=mappings[100];
+       }
+       console.log(val);
+          returnVal = val+tenRoman+unitRoman;
+     }else{
+                 let val=mappings[500];
+                let diff = hundreds-500;
+              let times = diff/100;
+        for(let i=0;i<times;i++){
+            val+=mappings[100];
+        }
+        returnVal = val+tenRoman+unitRoman;
+     }
+     
+       }
+       //less than 500 
+       
+     
      }
     
-    console.log(returnVal)
+  console.log(returnVal)
   
     
     
@@ -94,4 +121,4 @@ if(map.includes(numStr)){
  return returnVal;
 }
 
-convertToRoman(83);
+convertToRoman(400);
