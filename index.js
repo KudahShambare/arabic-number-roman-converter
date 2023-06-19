@@ -112,6 +112,26 @@ if(map.includes(numStr)){
        
      
      }
+     //numbers greater than 1000
+     if(num>1000){
+             let arr = numStr.split("");
+             let thousands = Number(1000*arr[0]);
+           let hundreds = Number(100*arr[1]);
+       let tens =Number( 10*arr[2]);
+       let units = Number(arr[3]);
+       
+       let hundredRoman = convertToRoman(hundreds);
+       let tenRoman = convertToRoman(tens);
+       let unitRoman = convertToRoman(units);
+       
+             let val=mappings[1000];
+              let times =thousands/1000;
+                  for(let i=1;i<times;i++){
+            val+=mappings[1000];
+       }
+     //console.log(val);
+          returnVal = val+hundredRoman+tenRoman+unitRoman;
+     }
     
   console.log(returnVal)
   
@@ -121,4 +141,4 @@ if(map.includes(numStr)){
  return returnVal;
 }
 
-convertToRoman(400);
+convertToRoman(2014);
